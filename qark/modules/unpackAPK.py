@@ -162,14 +162,15 @@ def decompile(path):
     # with common.term.cbreak():
     val = None
     while 1 == 1:
-        with common.term.location(0, common.term.height - 3):
-            print "Decompilation may hang/take too long (usually happens when the source is obfuscated)."
-            print "At any time," + common.term.bold_underline_red_on_white(
-                'Press C to continue') + " and QARK will attempt to run SCA on whatever was decompiled."
-            val = common.term.inkey(timeout=1)
-            if not (thread1.is_alive() or thread2.is_alive() or thread3.is_alive()):
-                break
+        # with common.term.location(0, common.term.height - 3):
+        #     print "Decompilation may hang/take too long (usually happens when the source is obfuscated)."
+        #     print "At any time," + common.term.bold_underline_red_on_white(
+        #         'Press C to continue') + " and QARK will attempt to run SCA on whatever was decompiled."
+        #     val = common.term.inkey(timeout=1)
+        if not (thread1.is_alive() or thread2.is_alive() or thread3.is_alive()):
+            break
 
+    print "prabin broke"
     if thread1.is_alive():
         thread1.terminate()
     if thread2.is_alive():
@@ -178,8 +179,8 @@ def decompile(path):
         thread3.terminate()
 
     # Go back to the bottom of the screen
-    with common.term.location(0, common.term.height):
-        print ""
+    # with common.term.location(0, common.term.height):
+    #    print ""
 
     g1 = grep_1(dirname, "// Byte code:")
     g2 = grep_1(dirname + "1", "// This method has failed to decompile.")
