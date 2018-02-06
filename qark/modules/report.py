@@ -69,7 +69,7 @@ severity[Severity.ERROR] = "Error"
 def writeSection(sec, data_list):
     try:
         pre_rendered = open(common.reportDir + "/report.html", 'r').read()
-        pre_rendered_html2 = BeautifulSoup(pre_rendered, 'html5lib')
+        pre_rendered_html2 = BeautifulSoup(pre_rendered, 'lxml')
 
         list_of_files = []
         # Gather unique files
